@@ -13,7 +13,7 @@
 (defun my-skeleton-pair-end (arg)
   "Skip the char if it is an ending, otherwise insert it."
   (interactive "*p")
-  (let ((char last-command-char))
+  (let ((char last-command-event))
     (if (and (assq char my-skeleton-pair-alist)
              (eq char (following-char)))
         (forward-char)
@@ -38,3 +38,5 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq-default py-indent-offset 4)
+(set-fill-column 120)
+
