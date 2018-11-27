@@ -16,6 +16,6 @@ if [ -e ~/scratch.sh ]; then
   alias screen='./scratch.sh; screen'
 fi
 
-alias frb='rc=`git stash` && git fetch upstream && git rebase upstream/master && if [ "$rc" != "No local changes to save" ]; then git stash pop; fi;'
+alias frb='rc=`git stash` && if [ `git remote show | wc -l | sed "s/ //g"` == "1" ]; then rem=`git remote show`; else rem="origin"; fi; git fetch $rem && git rebase $rem/master && if [ "$rc" != "No local changes to save" ]; then git stash pop; fi;'
 
 alias productivity='git log -p --since=yesterday --author=Steve>tmp;P=`grep ^+[^+] tmp|wc -l`;M=`grep ^-[^-] tmp|wc -l`; echo $P-.5*$M|bc;rm tmp'
