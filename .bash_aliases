@@ -19,6 +19,6 @@ fi
 alias frb='rc=`git stash` && if [ `git remote show | wc -l | sed "s/ //g"` == "1" ]; then rem=`git remote show`; else rem="origin"; fi; git fetch $rem && git rebase $rem/master && if [ "$rc" != "No local changes to save" ]; then git stash pop; fi;'
 
 # should probably assert !! (actually fc -ln -1 because !! expansion happens too early) includes grep :)
-alias opengrep='fc=$(fc -ln -1); f=`eval $fc | sed -E "s/([^:]*):.*/\1/"`; open $f'
+alias openfiles='fc=$(fc -ln -1); f=`eval $fc | grep ":" | sed -E "s/([^:]*):.*/\1/" | xargs`; code -n $f'
 
 alias productivity='git log -p --since=yesterday --author=Steve>tmp;P=`grep ^+[^+] tmp|wc -l`;M=`grep ^-[^-] tmp|wc -l`; echo $P-.5*$M|bc;rm tmp'
