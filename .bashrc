@@ -108,3 +108,6 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+export PATH="/usr/local/bin:$PATH"  # for loom
+eval "$(direnv hook bash)"
