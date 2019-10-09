@@ -3,11 +3,7 @@ alias ll='ls -al'
 alias ..='cd ..'
 alias vi='vim'
 
-alias f='pushd ~/projects/HearsayLabs/fanmgmt'
-alias dev='pushd ~/projects/HearsayLabs/dev/sgarrity'
-
-alias apache_restart='sudo /etc/init.d/apache2 restart'
-
+# these ensure that SSH key forwarding works through screen
 if [ -e ~/.screen/session-variables ]; then
   alias ssh='source ~/.screen/session-variables; ssh'
 fi
