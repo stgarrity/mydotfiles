@@ -1,3 +1,10 @@
+# called for all terminals on OSX
+
+# hide the catalina+ zsh reminder :)
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# up the soft file descriptor limit from 256!
+ulimit -S -n 4096
 
 # this seems to be the mac version, linux is in .bashrc and under /etc/bash_completion
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
@@ -13,5 +20,5 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 
 # to auto-activate pyenv during virtualenv usage
 # https://github.com/pyenv/pyenv-virtualenv
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
