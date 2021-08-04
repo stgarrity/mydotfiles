@@ -15,6 +15,12 @@ fi
 
 popd > /dev/null
 
+# set up homebrew path before .bashrc so direnv bin is found
+if [ -f /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# source .bashrc because on OSX, interactive shells don't get it
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
