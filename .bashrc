@@ -117,4 +117,11 @@ if [ -f /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bas
 fi
 
 export PATH="/usr/local/bin:$PATH"  # for loom
+
+# hook direnv so that .envrc works for loom, userclouds, etc
 eval "$(direnv hook bash)"
+
+# fuzzy bash history matching
+# if setting up on a new machine and it's not working,
+# $ brew install fzf && $(brew --prefix)/opt/fzf/install`
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
