@@ -17,7 +17,7 @@ alias irb='git rebase -i origin/master'
 
 # postfix with -b [branch] to change base
 # this makes some assumptions about upstream being named origin but that should be it
-alias cpr='BRANCH=$(git log --format=format:"%D" origin/master..HEAD | grep -v HEAD | grep -v "^$" | tr ',' '\n'  | grep -v origin); if [ "$BRANCH" != "" ]; then hub pull-request -r akshayjshah -b $BRANCH; else hub pull-request -r akshayjshah; fi'
+alias cpr='BRANCH=$(git log --format=format:"%D" origin/master..HEAD | grep -v HEAD | grep -v "^$" | tr '"'"','"'"' '"'"'\n\'"'"'  | grep -v origin | grep -v tag); if [ "$BRANCH" != "" ]; then hub pull-request -r akshayjshah -b $BRANCH; else hub pull-request -r akshayjshah; fi'
 
 # should probably assert !! (actually fc -ln -1 because !! expansion happens too early) includes grep :)
 alias openfiles='fc=$(fc -ln -1); f=`eval $fc | grep ":" | sed -E "s/([^:]*):.*/\1/" | xargs`; code -n $f'
