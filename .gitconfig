@@ -36,3 +36,5 @@
 	editor = ~/.restack/edit.sh
 [core]
 	editor = /usr/bin/vim
+[url "git@github.com:userclouds/homebrew-plex"]
+	insteadOf = https://github.com/userclouds/homebrew-plex
