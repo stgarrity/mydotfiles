@@ -14,6 +14,8 @@ fi
 
 alias frb='rc=`git stash` && if [ `git remote show | wc -l | sed "s/ //g"` == "1" ]; then rem=`git remote show`; else rem="origin"; fi; git fetch $rem && git rebase $rem/master && if [ "$rc" != "No local changes to save" ]; then git stash pop; fi;'
 alias irb='git rebase -i origin/master'
+alias wip='git add . && touch bypass_lint && git commit -m "WIP"'
+alias pushwip='touch bypass_fixme && touch bypass_config && touch bypass_tests && touch bypass_gen && git push -f origin `git rev-parse --abbrev-ref HEAD`'
 
 # postfix with -b [branch] to change base
 # this makes some assumptions about upstream being named origin but that should be it
