@@ -56,8 +56,23 @@ fi
 source ~/.mydotfiles/.git-prompt.sh
 source ~/.mydotfiles/.git-completion
 
+function __valid_aws_creds() {
+  if [ -v AWS_TOKEN_EXPIRY ]; then
+    # AWS uses ISO-8601, so generate our local equiv
+    local NOW
+    NOW=$(date -u +%Y-%m-%dT%H:%M:%S%z)
+
+    if [[ $AWS_TOKEN_EXPIRY > $NOW ]]; then
+      printf -- " (AWS)"
+    else
+      printf -- " (AWS exp)"
+    fi
+  fi
+
+}
+
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1)\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1)$(__valid_aws_creds)\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
