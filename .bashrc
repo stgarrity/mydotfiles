@@ -2,6 +2,12 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# if we're running pre bash 5, we forgot to update
+# edit /etc/shells to include the path to bash/brew, and then run chsh to set your user bash path to that same path
+if [ ${BASH_VERSION:0:1} != "5" ]; then
+    echo "You're using an old version of bash, please upgrade using .bashrc instructions"
+fi
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
