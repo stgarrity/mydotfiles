@@ -19,8 +19,8 @@ alias pushwip='touch bypass_lint && touch bypass_fixme && touch bypass_config &&
 
 # postfix with -b [branch] to change base
 # this makes some assumptions about upstream being named origin but that should be it
-export REVIEWER=kuttas
-alias cpr='BRANCH=$(git log --format=format:"%D" origin/master..HEAD | grep -v HEAD | grep -v "^$" | tr '"'"','"'"' '"'"'\n\'"'"'  | grep -v origin | grep -v tag); if [ "$BRANCH" != "" ]; then hub pull-request -r $REVIEWER -b $BRANCH; else hub pull-request -r $REVIEWER; fi'
+export REVIEWER=v-fedorov-gh
+alias cpr='BRANCH=$(git log --format=format:"%D" origin/master..HEAD | grep -v HEAD | grep -v "^$" | tr '"'"','"'"' '"'"'\n\'"'"'  | grep -v origin | grep -v tag); if [ "$BRANCH" != "" ]; then hub pull-request -r $REVIEWER -b $BRANCH && echo "created nested PR to branch $BRANCH"; else hub pull-request -r $REVIEWER; fi'
 
 # should probably assert !! (actually fc -ln -1 because !! expansion happens too early) includes grep :)
 alias openfiles='fc=$(fc -ln -1); f=`eval $fc | grep ":" | sed -E "s/([^:]*):.*/\1/" | xargs`; code -n $f'
